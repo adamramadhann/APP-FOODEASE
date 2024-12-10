@@ -1,3 +1,10 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+.blur-effect {
+    background: rgba(0, 0, 255, 0.6); /* Warna dengan transparansi */
+    backdrop-filter: blur(10px); /* Intensitas blur */
+  }
+  

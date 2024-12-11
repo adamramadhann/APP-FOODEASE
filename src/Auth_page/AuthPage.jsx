@@ -14,7 +14,7 @@ const AuthPage = () => {
           <button
             onClick={() => setIsActive(false)}
             className={`text-xl transition-all flex-1 pb-4 ${
-              !isActive ? "border-b-2 border-orange-500" : ""
+              !isActive ? "border-b-2 border-[#FF4B3A]" : ""
             }`}
           >
             Login
@@ -22,7 +22,7 @@ const AuthPage = () => {
           <button
             onClick={() => setIsActive(true)}
             className={`text-xl transition-all flex-1 pb-4 ${
-              isActive ? "border-b-2 border-orange-500" : ""
+              isActive ? "border-b-2 border- bg-[#FF4B3A]" : ""
             }`}
           >
             Register

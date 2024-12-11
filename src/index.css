@@ -3,8 +3,18 @@
 @tailwind utilities;
 
 
-.blur-effect {
-    background: rgba(0, 0, 255, 0.6); /* Warna dengan transparansi */
-    backdrop-filter: blur(10px); /* Intensitas blur */
+  input[type="search"]::-webkit-search-cancel-button {
+    -webkit-transform: scale(2); /* Membesarkan ikon */
+    transform: scale(2); /* Membesarkan ikon */
+    -webkit-filter: brightness(0) saturate(100%) invert(40%) sepia(40%) hue-rotate(330deg) saturate(300%) brightness(1.5);
   }
+
+  .no-scrollbar::-webkit-scrollbar {
+    display: none; /* Hilangkan scrollbar di Chrome, Safari, dan Edge */
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none; /* Hilangkan scrollbar di Internet Explorer dan Edge */
+    scrollbar-width: none; /* Hilangkan scrollbar di Firefox */
+  }
+  
   

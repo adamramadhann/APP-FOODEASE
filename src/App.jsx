@@ -8,10 +8,12 @@ import LovePage from './page/pageScreen/LovePage'
 import HistoryPage from './page/pageScreen/HistoryPage'
 import UserPage from './page/pageScreen/UserPage'
 import HomePage from './page/pageScreen/HomePage'
+import TrolleyCard from './component/TrolleyCard'
+import TrolleyPage from './page/pageScreen/TrolleyPage'
 
 const App = () => {
 
-  const [isLogin, setIsLogin] = useState(false)
+  const [isLogin, setIsLogin] = useState(true)
 
   if(!isLogin) {
     return (
@@ -30,6 +32,7 @@ const App = () => {
             <Route path='/userPage' element={<UserPage/>} />
             <Route path='/historyPage' element={<HistoryPage/>} />
         </Route>
+            <Route path='/trolley' element={<TrolleyPage/>} />
         <Route path='/detail/:id' element={<DetailCard/>} />
     </Routes>
   )

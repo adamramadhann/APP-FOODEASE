@@ -2,7 +2,9 @@ import React from 'react'
 
 const LovePage = () => {
   return (
-    <div>LovePage</div>
+    <div>
+      love Page
+    </div>
   )
 }
 

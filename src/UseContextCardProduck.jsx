@@ -23,8 +23,31 @@ const UseContextCardProduck = ({children}) => {
         })
     }
 
+
+    const handleTambah = (value) => {
+        setCart((prev) => 
+            prev.map((val) => 
+              val.nama === value
+              ? {...val, quantity : val.quantity + 1}
+              : val
+            )
+        )
+    }
+
+    const handleKurang = (value) => {
+        setCart((prev) => 
+            prev
+                .map((items) => 
+                    items.nama === value
+                        ? {...items, quantity : items.quantity - 1}
+                        : items
+                )
+                .filter((val) => val.quantity > 0)
+        )
+    }
+
   return (
-    <cardContext.Provider value={{cart, addToCard}} >
+    <cardContext.Provider value={{cart, addToCard, handleTambah, handleKurang}} >
         {children}
     </cardContext.Provider>
   )

@@ -1,6 +1,10 @@
 import React from 'react';
+import { useCard } from '../UseContextCardProduck';
 
 const TrolleyCard = ({ cart }) => {
+
+  const {handleKurang, handleTambah} = useCard()
+
   return (
     <div className="p-3 bg-gray-100 h-[570px] no-scrollbar overflow-y-auto rounded-lg shadow-md">
       <h2 className="text-xl font-bold mb-3">Trolley</h2>
@@ -15,11 +19,17 @@ const TrolleyCard = ({ cart }) => {
               className="flex gap-3 items-center bg-white p-3 mb-2 rounded-lg shadow-sm"
             >
               <img src={item.gambar} alt={item.nama} className="w-16 h-16 rounded-full" />
-              <div className="flex flex-col ml-3">
-                <span className="font-semibold text-lg">{item.nama}</span>
-                <span className="text-sm text-gray-500">Qty: {quantity}</span>
-                <p>Total Item: ${totalItem}</p>
-              </div>
+             <div  className='flex w-full justify-between'>  
+                <div className="flex flex-col ml-3">
+                    <span className="font-semibold text-sm">{item.nama}</span>
+                    <span className="text-xs py-2 text-gray-500">Qty: {quantity}</span>
+                    <p className='text-xs' >Total Item: ${totalItem}</p>
+                </div>
+                <div className='flex flex-col text-lg justify-between' >
+                    <button onClick={() => handleTambah(item.nama)} className='w-5 h-5 bg-slate-100' >+</button>
+                    <button onClick={() => handleKurang(item.nama)} className='w-5 h-5 bg-slate-100' >-</button>
+                </div>
+             </div>
             </div>
           );
         })

@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import { dataCategory } from '../../data/data';
-import { FaRegHeart } from 'react-icons/fa';
+import { FaHeart, FaRegHeart } from 'react-icons/fa';
 import { AiOutlineLeft } from 'react-icons/ai';
 import { useCard } from '../../UseContextCardProduck';
 import Notification from '../../component/Notification';
@@ -10,6 +10,7 @@ const DetailCard = () => {
   const { id } = useParams();
   const { addToCard } = useCard();
   const navigate = useNavigate();
+  const [bgActive, setBgActive] = useState(false)
   const [showNotification, setShowNotification] = React.useState(false);
 
   const dataDetail = dataCategory
@@ -18,30 +19,59 @@ const DetailCard = () => {
 
   if (!dataDetail) {
     return (
-      <div className="w-screen h-screen bg-black/20 flex items-center justify-center">
+      <div className="w-screen h-screen -mt-20 bg-black/20 flex items-center justify-center">
         <h1 className="text-xl text-white">Data IS Not Found</h1>
       </div>
     );
   }
-
   const handleTrolley = () => {
     addToCard(dataDetail);
     setShowNotification(true);
-
     setTimeout(() => {
       setShowNotification(false);
-      navigate(-1);
+      navigate('/');
     }, 100);
   };
 
+
+  const handleSaveLocalStorage = () => {
+
+    // Ambil data yang sudah ada di localStorage
+    const existingHeart = JSON.parse(localStorage.getItem('localCartheart')) || [];
+  
+    // Cek apakah item sudah ada untuk menghindari duplikasi
+    const isItemExist = existingHeart.some((item) => item.nama === dataDetail.nama);
+  
+    if (!isItemExist) {
+      // Tambahkan item baru
+      const updatedHeart = [...existingHeart, dataDetail];
+  
+      // Simpan kembali ke localStorage
+      localStorage.setItem('localCartheart', JSON.stringify(updatedHeart));
+      alert('Add to like page success');
+    } else {
+      alert('This item is already in your like page!');
+    }
+  };
+  
+
+  useEffect(() => {
+    const localGetItem = JSON.parse(localStorage.getItem('localCartheart' || []))
+    const cekLocal = localGetItem.some((val) => val.nama === dataDetail.nama)
+
+    setBgActive(cekLocal)
+  }, [])
+
+ 
+
   return (
-    <div className="w-screen relative h-[100dvh] p-5">
+    <div className=" relative m-3 mt-5 h-[100dvh]">
       <div className="flex w-full justify-between items-center">
         <Link to={'/'}>
           <AiOutlineLeft size={25} />
         </Link>
-        <button>
-          <FaRegHeart size={25} />
+        <button onClick={handleSaveLocalStorage} >
+          <FaHeart className={`${bgActive ? 'fill-red-500' : 'fill-gray-400' }`}  size={25} />
         </button>
       </div>
       <div className="w-full flex items-center justify-center flex-col">
@@ -57,7 +87,7 @@ const DetailCard = () => {
         <p className="text-justify mt-5">{dataDetail.komposisi}</p>
         <p className="text-justify mt-5">{dataDetail.detail}</p>
         <button
-          className="absolute bottom-5 w-[90%] py-3 bg-[#FA4A0C] px-5 font-semibold rounded-sm shadow-md hover:bg-green-500  focus:outline-none focus:ring focus:ring-green-400  focus:ring-opacity-75 text-white"
+          className="absolute bottom-10 w-full py-3 bg-[#FA4A0C] px-5 font-semibold rounded-sm shadow-md hover:bg-green-500  focus:outline-none focus:ring focus:ring-green-400  focus:ring-opacity-75 text-white"
           onClick={handleTrolley}
         >
           Add To Cart

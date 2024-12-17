@@ -18,7 +18,7 @@ const TrolleyPage = () => {
   }, 0);
 
   return (
-    <div className=" h-[100dvh] w-full relative ">
+    <div className=" h-[100dvh] p-3 -top-3 w-full relative ">
       <div className="flex gap-2 py-5 items-center">
         <Link className="flex gap-2 items-center" to={'/'}>
           <AiOutlineLeft size={25} />
@@ -29,7 +29,7 @@ const TrolleyPage = () => {
       <div className='px-3' >
        <TrolleyCard cart={cart} />
       </div>
-      <button className='w-[95%] rounded-sm py-3 left-1/2 translate-x-[-50%] absolute bottom-3 text-white bg-green-500'>
+      <button className='w-[95%] rounded-sm py-3 left-1/2 translate-x-[-50%] absolute bottom-0 text-white bg-green-500'>
         {`Total Price: $${totalHarga.toFixed(2)}`} 
       </button>
     </div>

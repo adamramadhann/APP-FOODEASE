@@ -2,8 +2,12 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { FiSearch } from 'react-icons/fi';
 import { dataCategory } from '../../data/data';
+import { AiOutlineAlignLeft } from 'react-icons/ai';
+import { useCard } from '../../UseContextCardProduck';
 
 const HomePage = () => {
+  const {cart} = useCard()
+
   const [serch, setSerch] = useState('');
   const [selectCatagory, setSelectCatagory] = useState('All');
 
@@ -21,7 +25,13 @@ const HomePage = () => {
     // if(cart !== 0) return alert("card succes add to trolley")
 
   return (
-    <div className='w-full h-full'>
+    <div className='w-full p-5 h-full'>
+      <div className='flex relative w-full justify-between' >
+          <button><AiOutlineAlignLeft/></button>
+          <Link to={'/trolley'} className='w-5 h-5' ><img src="public/image copy.png" alt="" />
+              <span className={`absolute -right-3 -top-2 w-5 h-5 text-xs flex items-center justify-center bg-red-500 text-white rounded-full ${cart.length === 0 && 'hidden'}`} >{cart.length}</span>
+          </Link>
+      </div>
       <h1 className='text-3xl flex pt-7 font-bold'>
         Delicious <br /> food for you 
       </h1>
@@ -49,7 +59,7 @@ const HomePage = () => {
         ))}
       </div>
 
-      <div className='flex flex-wrap justify-center gap-4 mt-1 max-h-[320px] overflow-y-auto'>
+      <div className='flex flex-wrap justify-center gap-4 mt-1 max-h-[350px] overflow-y-auto'>
         {filteredData.map((val, index) => (
           <div
             className='bg-white mt-16 mb-2 rounded-md px-2 w-[150px] h-auto pb-3 shadow-[0_0_8px_rgba(0,0,0,0.2)] flex flex-col items-center justify-center'

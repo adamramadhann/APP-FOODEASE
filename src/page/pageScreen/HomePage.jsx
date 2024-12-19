@@ -59,7 +59,7 @@ const HomePage = () => {
         ))}
       </div>
 
-      <div className='flex flex-wrap justify-center gap-4 mt-1 max-h-[350px] overflow-y-auto'>
+      <div className='flex flex-wrap justify-center gap-10 mt-1 max-h-[470px] no-scrollbar overflow-y-auto'>
         {filteredData.map((val, index) => (
           <div
             className='bg-white mt-16 mb-2 rounded-md px-2 w-[150px] h-auto pb-3 shadow-[0_0_8px_rgba(0,0,0,0.2)] flex flex-col items-center justify-center'

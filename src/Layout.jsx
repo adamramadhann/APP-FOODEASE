@@ -1,9 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { AiOutlineAlignLeft } from 'react-icons/ai';
 import { FaRegHeart } from 'react-icons/fa';
 import { FiUser } from 'react-icons/fi';
 import { IoHomeOutline } from 'react-icons/io5';
-import { MdHistory } from 'react-icons/md';
 import { NavLink, Outlet, useLocation } from 'react-router-dom';
 import { useCard } from './UseContextCardProduck';
 import Notification from './component/Notification';
@@ -13,18 +11,17 @@ const Layout = () => {
   const [notif, setNotif] = useState(false);
   const location = useLocation();
 
-  // Path yang memiliki navigasi
+  
   const pathRoute = [
     { path: '/', icon: IoHomeOutline },
     { path: '/lovePage', icon: FaRegHeart },
-    { path: '/userPage', icon: FiUser },
-    { path: '/historyPage', icon: MdHistory },
+    { path: '/userPage', icon: FiUser }
   ];
 
-  // Cek apakah current path ada di dalam pathRoute
+  
   const showNavigation = pathRoute.some((route) => route.path === location.pathname);
 
-  // Handle notifikasi
+ 
   const handleNotif = () => {
     if (cart.length) {
       setNotif(true);

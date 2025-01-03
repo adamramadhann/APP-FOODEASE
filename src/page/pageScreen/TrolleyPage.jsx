@@ -2,11 +2,21 @@ import React, { useState } from 'react';
 import TrolleyCard from '../../component/TrolleyCard';
 import { useCard } from '../../UseContextCardProduck';
 import { AiOutlineLeft } from 'react-icons/ai';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const TrolleyPage = () => {
   const { cart } = useCard(); 
   const [select, setSelect] = useState([])
+  const navigate = useNavigate()
+
+
+  const handleNavigaetPayment = () => {
+    if (select.length === 0) {
+       alert('makanan belum ada yang di pilih, silahkan pilih makanan terebih dahulu !!')
+    } else {
+      navigate('/payment')
+    }
+  }
 
   const checkouuth = (value) => {
     setSelect((prev) => {
@@ -40,9 +50,15 @@ const TrolleyPage = () => {
       <h2 className="text-xl font-bold mb-3">Checkout</h2>
         <TrolleyCard onChange={checkouuth} checked={(nama) => select.includes(nama)} cart={cart} />
       </div>
-      <button className='w-[95%] rounded-sm py-3 left-1/2 translate-x-[-50%] absolute bottom-0 text-white bg-green-500'>
-        {`Total Price: $${totalHarga.toFixed(2)}`} 
-      </button>
+      <div className='w-[95%] rounded-sm py-3 text-center mt-3 ' >
+          <span className='text-lg flex w-full justify-between px-5'  >
+            <h1 >Total Price: </h1>
+            ${totalHarga.toFixed(2)}
+          </span>
+      </div>
+        <button onClick={handleNavigaetPayment} className='w-[95%] rounded-lg py-3 left-1/2 translate-x-[-50%] absolute bottom-0 text-white bg-[#FA4A0C]'>
+            Complate Order
+        </button>
     </div>
   );
 };

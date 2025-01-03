@@ -10,6 +10,7 @@ import UserPage from './page/pageScreen/UserPage'
 import HomePage from './page/pageScreen/HomePage'
 import TrolleyCard from './component/TrolleyCard'
 import TrolleyPage from './page/pageScreen/TrolleyPage'
+import PaymentPage from './page/pageScreen/PaymentPage'
 
 const App = () => {
 
@@ -32,6 +33,7 @@ const App = () => {
             <Route path='/userPage' element={<UserPage/>} />
             <Route path='/historyPage' element={<HistoryPage/>} />
             <Route path='/trolley' element={<TrolleyPage/>} />
+            <Route path='/payment' element={<PaymentPage/>} />
             <Route path='/detail/:id' element={<DetailCard/>} />
         </Route>
     </Routes>

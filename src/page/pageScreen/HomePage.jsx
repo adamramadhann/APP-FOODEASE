@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { FiSearch } from 'react-icons/fi';
 import { dataCategory } from '../../data/data';
@@ -25,7 +25,7 @@ const HomePage = () => {
     // if(cart !== 0) return alert("card succes add to trolley")
 
   return (
-    <div className='w-full p-5 h-full'>
+    <div className='w-full p-5 h-[100dvh]'>
       <div className='flex relative w-full justify-between' >
           <button><AiOutlineAlignLeft/></button>
           <Link to={'/trolley'} className='w-5 h-5' ><img src="public/image copy.png" alt="" />

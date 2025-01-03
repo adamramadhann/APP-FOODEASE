@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 import { FaRegHeart } from 'react-icons/fa';
 import { FiUser } from 'react-icons/fi';
 import { IoHomeOutline } from 'react-icons/io5';
@@ -22,7 +22,7 @@ const Layout = () => {
   const showNavigation = pathRoute.some((route) => route.path === location.pathname);
 
  
-  const handleNotif = () => {
+  const handleNotif = useCallback(() => {
     if (cart.length) {
       setNotif(true);
       setTimeout(() => {
@@ -31,7 +31,7 @@ const Layout = () => {
     } else {
       setNotif(false);
     }
-  };
+  }, [cart.length]);
 
   useEffect(() => {
     setTimeout(() => {
@@ -39,7 +39,7 @@ const Layout = () => {
         handleNotif();
       }
     }, 500);
-  }, [cart]);
+  }, [cart, handleNotif]);
 
   return (
     <div className="w-screen relative h-[100dvh]">

@@ -5,6 +5,8 @@ const TrolleyCard = ({ cart, checked, onChange }) => {
 
   const {handleKurang, handleTambah} = useCard()
 
+
+
   return (
     <div className="p-3 bg-gray-100 h-auto py-3 no-scrollbar overflow-y-auto rounded-lg shadow-md">
       {cart.length > 0 ? (
@@ -34,8 +36,8 @@ const TrolleyCard = ({ cart, checked, onChange }) => {
                     <p className='text-xs' >Total Item: ${totalItem}</p>
                     </div>
                     <div className='flex w-[50px] absolute right-3 text-white bottom-1 text-lg justify-between' >
-                    <button onClick={() => handleTambah(item.nama)} className=' text-center text-xs p-1 px-2 rounded-md bg-gray-400' >+</button>
-                    <button onClick={() => handleKurang(item.nama)} className='text-xs p-1 px-2 rounded-md bg-gray-400' >-</button>
+                    <button onClick={(e) => { e.stopPropagation(); handleTambah(item.nama)}} className=' text-center text-xs p-1 px-2 rounded-md bg-gray-400' >+</button>
+                    <button onClick={(e) =>{e.stopPropagation();  handleKurang(item.nama)}} className='text-xs p-1 px-2 rounded-md bg-gray-400' >-</button>
                     </div>
                 </div>
              </div>

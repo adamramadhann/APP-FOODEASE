@@ -39,7 +39,7 @@ const LovePage = () => {
   }, []);
 
   return (
-    <div className="w-full p-5 h-[100dvh] bg-gradient-to-b from-green-100 to-white">
+    <div className="w-full p-5 h-full bg-gradient-to-b from-green-100 to-white">
       {isLoading ? (
         <div className="flex items-center justify-center h-full w-full">
           <div className="w-8 h-8 border-4 border-gray-300 border-t-green-500 rounded-full animate-spin"></div>

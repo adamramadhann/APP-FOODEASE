@@ -42,7 +42,7 @@ const Layout = () => {
   }, [cart, handleNotif]);
 
   return (
-    <div className="w-screen relative h-[100dvh]">
+    <div className="w-full relative h-[100dvh]">
       {/* Notifikasi */}
       {notif && <Notification />}
 
@@ -53,8 +53,8 @@ const Layout = () => {
 
       {/* Navigasi hanya ditampilkan jika path cocok */}
       {showNavigation && (
-        <div className="w-full flex-1 mt-10 flex justify-center h-5">
-          <div className="w-full px-5 flex items-center justify-between">
+        <div className="w-full flex-1 bg-white mt-10 flex justify-center">
+          <div className="w-full px-5 flex h-10 bg-white  items-center justify-between">
             {pathRoute.map((val) => (
               <NavLink
                 key={val.path}
